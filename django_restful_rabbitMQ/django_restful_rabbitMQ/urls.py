@@ -24,8 +24,11 @@ router = DefaultRouter()
 router.register(r'snippets', snippets_view.SnippetViewSet)
 router.register(r'users', user_views.UserViewSet)
 
+from rest_framework_jwt.views import obtain_jwt_token
+
 
 urlpatterns = [
+    url(r'^api-token-auth/', obtain_jwt_token),
     path('admin/', admin.site.urls),
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

@@ -2,7 +2,9 @@ from django.conf.urls import url
 from rest_framework import renderers
 
 from mywebsite.views.snippets_view import SnippetViewSet
-from mywebsite.views.user_views import UserViewSet, api_root
+from mywebsite.views.user_views import UserViewSet
+from rest_framework.authtoken import views as token_views
+
 
 snippet_list = SnippetViewSet.as_view({
     'get': 'list',
@@ -25,7 +27,6 @@ user_detail = UserViewSet.as_view({
 })
 
 urlpatterns = [
-    url(r'^$', api_root),
     url(r'^snippets/$', snippet_list, name='snippet-list'),
     url(r'^snippets/(?P<pk>[0-9]+)/$', snippet_detail, name='snippet-detail'),
     url(r'^snippets/(?P<pk>[0-9]+)/highlight/$', snippet_highlight, name='snippet-highlight'),
