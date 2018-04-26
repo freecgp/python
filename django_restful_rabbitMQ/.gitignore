@@ -1,3 +1,5 @@
 *.zip
 /venv/
 /.idea/
+settings.py
+/django_restful_rabbitMQ/settings.py
